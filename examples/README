@@ -1,0 +1,33 @@
+ Running CCCG on examples
+ ------------------------
+
+ The minimum input that should be provided to CCCG is the coordinates
+ of data objects, and the number of clusters:
+
+ $ ./bin/cccg -d <DATAFILE> -k <#CLUSTERS>
+
+ For example, you could run CCCG on iris dataset and ask it to find
+ the optimal clustering consisting of three clusters. You could do so
+ using the following command in CCCG home direcotry:
+
+ $ ./bin/cccg -d ./examples/iris.data -k 3
+
+ However, running exact algorithms for unconstrained clustering
+ problems could take a lot of time. In contrast, the following
+ constrained clustering problem converges to the optimal solution very
+ quickly:
+
+ $ ./bin/cccg -d ./examples/iris.data -k 3 -n ./examples/iris.constraints
+
+ The command aobve, specifies that clustering constraints are stored
+ in file iris.constraints.
+
+ The performance of CCCG could be boosted if you provide it an initial
+ solution:
+
+ $  ./bin/cccg -d ./examples/iris.data -k 3 -n ./examples/iris.constraints -i ./examples/iris.initial
+
+ You could also provide a set of initial solutions (clusterings) by
+ specifying the directory where these solutions are stored:
+
+ $ ./bin/cccg -d ./examples/iris.data -k 3 -n ./examples/iris.constraints -r ./examples/initial
